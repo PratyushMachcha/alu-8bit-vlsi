@@ -29,6 +29,7 @@ The design supports multiple arithmetic and logical operations and is validated 
 
 ### 🔹 Waveform Output
 ![Waveform](reports/waveform.png)
+<img width="1920" height="444" alt="waveform png" src="https://github.com/user-attachments/assets/fcd048e6-cde5-4cf4-90d5-dc4cb7b15a7d" />
 
 ✔ Verified all operations:
 - ADD → 15  
@@ -40,6 +41,7 @@ The design supports multiple arithmetic and logical operations and is validated 
 - SHIFT operations correct  
 
 📊 Synthesis
+<img width="680" height="1080" alt="alu_schematic png" src="https://github.com/user-attachments/assets/615576e7-ca43-4a4a-8e5a-572927ef4562" />
 
 - Tool: Yosys
 - Cells: 15
