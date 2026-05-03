@@ -1,0 +1,17 @@
+=== Timing Report ===
+
+Design: 8-bit ALU
+
+Critical Path:
+Input → Adder → Multiplexer → Output
+
+Estimated Delay:
+Adder ≈ 5 ns
+Mux ≈ 1.5 ns
+
+Total ≈ 6.5 ns
+
+Required Time: 10 ns
+Slack: +3.5 ns
+
+Status: Timing Met

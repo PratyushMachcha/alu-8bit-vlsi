@@ -1,0 +1,3 @@
+read_verilog ../rtl/alu_8bit.v
+synth -top alu_8bit
+tee -o ../reports/synthesis_report.txt stat
