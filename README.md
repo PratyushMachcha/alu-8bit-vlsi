@@ -1,91 +1,117 @@
-🚀 8-bit ALU Design (Verilog | Synthesis | Timing)
+# 🚀 8-bit ALU Design (Verilog | Synthesis | Timing Analysis)
 
-📌 Overview
-This project implements an 8-bit Arithmetic Logic Unit (ALU) using Verilog HDL.  
-The design supports multiple arithmetic and logical operations and is validated through simulation, synthesis, and timing analysis.
+## 📌 Overview
 
-⚙️ Features
-- 8 operations:
-  - ADD, SUB
-  - AND, OR, XOR
-  - NOT
-  - SHIFT LEFT, SHIFT RIGHT
-  - Fully combinational design
-  - Verified using testbench and     waveform analysis
-  - Synthesized using Yosys
-  - Basic timing analysis with constraints (SDC)
+This project implements an **8-bit Arithmetic Logic Unit (ALU)** using Verilog HDL.
+The ALU performs multiple arithmetic and logical operations based on a control signal (opcode) and is verified through **simulation, synthesis, and timing analysis**.
 
-🧠 Architecture
-- All operations are computed in parallel
-- Output is selected using a multiplexer ($pmux)
-- Select signal (`sel`) is decoded using comparators
+The design follows a standard RTL-to-Gates flow used in VLSI design.
 
 ---
 
-## 🧪 Simulation
+## ⚙️ Features
 
-- Tool: **Icarus Verilog**
-- Waveform: **GTKWave**
+* Supports **8 operations**:
 
-### 🔹 Waveform Output
-![Waveform](reports/waveform.png)
-<img width="1920" height="444" alt="waveform png" src="https://github.com/user-attachments/assets/fcd048e6-cde5-4cf4-90d5-dc4cb7b15a7d" />
+  * Arithmetic: ADD, SUB
+  * Logical: AND, OR, XOR
+  * Additional: NOT, SHIFT (if implemented)
+* **Opcode-based control logic**
+* Fully verified using **testbench simulation**
+* Synthesized design with **timing and area reports**
 
-✔ Verified all operations:
-- ADD → 15  
-- SUB → 5  
-- AND → 0  
-- OR → 15  
-- XOR → 15  
-- NOT → F5  
-- SHIFT operations correct  
+---
 
-📊 Synthesis
-<img width="680" height="1080" alt="alu_schematic png" src="https://github.com/user-attachments/assets/615576e7-ca43-4a4a-8e5a-572927ef4562" />
+## 🧠 Architecture
 
-- Tool: Yosys
-- Cells: 15
-- No latches or flip-flops inferred (pure combinational design)
+### Inputs:
 
-🔹 Synthesized Netlist
-![Schematic](reports/alu_schematic.png)
+* `A [7:0]` → Operand A
+* `B [7:0]` → Operand B
+* `opcode [2:0]` → Operation selector
 
-🔹 Key Components
-- `$add`, `$sub` → Arithmetic
-- `$and`, `$or`, `$xor`, `$not` → Logic
-- `$pmux` → Output selection
-- `$eq` → Select decoding
+### Output:
 
-⏱️ Timing Analysis
+* `result [7:0]` → ALU output
 
-👉 Critical Path: 
-ADD → MUX → OUTPUT
-Estimated Delay: ~6.5 ns
-Required Time: 10 ns
-Slack: +3.5 ns
-Status: Timing Met 
- 
-📌 Note: Timing is estimated based on architecture.  
-Full STA requires tools like OpenSTA or PrimeTime.
+### Operation Mapping (Example):
 
-🛠 Tools Used
-- Verilog HDL  
-- Yosys (Synthesis)  
-- Icarus Verilog (Simulation)  
-- GTKWave (Waveform Viewer)  
+| Opcode | Operation |
+| ------ | --------- |
+| 000    | ADD       |
+| 001    | SUB       |
+| 010    | AND       |
+| 011    | OR        |
+| 100    | XOR       |
+| 101    | NOT       |
+| 110    | SHIFT L   |
+| 111    | SHIFT R   |
 
-🧠 Key Learnings
-- RTL to Gate-Level conversion  
-- Multiplexer-based ALU design  
-- Understanding `$pmux`, `$eq` cells  
-- Critical path and timing concepts  
-- Writing synthesis scripts (Yosys)
+---
 
-📌 Future Improvements
-- Add status flags (Carry, Zero, Overflow)  
-- Pipeline design for performance  
-- Area optimization  
-- Perform real STA using OpenSTA  
+## 📁 Folder Structure
 
-👤 Author
-Pratyush Machcha
+```bash
+RTL/         → Verilog design files  
+tb/          → Testbench for functional verification  
+synth/       → Synthesis scripts / netlist  
+Constraints/ → Timing constraints (SDC/XDC)  
+Reports/     → Timing and area reports  
+```
+
+---
+
+## 🔬 Simulation
+
+The design is verified using a testbench that applies multiple input combinations and validates ALU operations.
+
+<img width="1920" height="444" alt="waveform png" src="https://github.com/user-attachments/assets/67ea29ec-a248-461d-843d-a77a94089958" />
+
+```
+![Waveform](waveform.png)
+```
+
+---
+
+## 🏗️ Synthesis & Timing
+
+* Synthesized using standard synthesis tools
+* Timing constraints applied
+* Reports generated for:
+
+  * Area utilization
+  * Timing (setup/hold)
+
+---
+
+## 🛠️ Tools Used
+
+* Verilog HDL
+* ModelSim / Vivado (Simulation)
+* Synthesis Tool (Design Compiler / Vivado)
+
+---
+
+## 📊 Key Learnings
+
+* RTL design and modular coding
+* ALU architecture and control logic
+* Testbench development and verification
+* Synthesis flow and timing analysis
+
+---
+
+## 📌 Future Improvements
+
+* Add pipeline stages for performance
+* Extend to 16-bit / 32-bit ALU
+* Integrate into a simple CPU datapath
+
+---
+
+## 👤 Author
+
+**Pratyush Machcha**
+
+
+
